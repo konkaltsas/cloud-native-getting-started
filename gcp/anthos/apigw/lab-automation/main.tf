@@ -101,7 +101,7 @@ resource "google_gke_hub_feature_membership" "feature_member" {
   feature = google_gke_hub_feature.feature.name
   membership = google_gke_hub_membership.ctx_lab.membership_id
   configmanagement {
-    version = "1.10.0"
+    version = "1.13.0"
     config_sync {
       git {
         sync_repo = github_repository.ctx_acm.ssh_clone_url

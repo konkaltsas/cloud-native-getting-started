@@ -35,6 +35,22 @@ resource "google_compute_firewall" "nsip_firewall" {
   target_tags = ["http-server", "https-server"]
 }
 
+resource "google_compute_firewall" "ssh_nsip_firewall" {
+
+  name          = "apigw-nsip-ssh-firewall"
+  network       = "default"
+  direction     = "INGRESS"
+  source_ranges = ["94.68.137.160/32", "185.25.64.249/32"]
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  target_tags = ["http-server", "https-server"]
+}
+
+
 resource "google_compute_firewall" "vip_firewall" {
   depends_on = [
     google_compute_network.vip_network, 
